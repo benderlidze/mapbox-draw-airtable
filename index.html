@@ -49,10 +49,10 @@
 
 
     <div id="map"></div>
-    <div class="calculation-box">
+    <!-- <div class="calculation-box">
         <p>Click the map to draw a polygon.</p>
         <div id="calculated-area"></div>
-    </div>
+    </div> -->
 
     <script>
         mapboxgl.accessToken = 'pk.eyJ1Ijoic2VyZ2JlciIsImEiOiJja3dwOWgzeGQwYWdyMm9xb2pkMDFvYmNuIn0.H9AJ_NLmDNYMed6dvu_Q0A';
@@ -77,24 +77,24 @@
         });
         map.addControl(draw);
 
-        map.on('draw.create', updateArea);
-        map.on('draw.delete', updateArea);
-        map.on('draw.update', updateArea);
+        // map.on('draw.create', updateArea);
+        // map.on('draw.delete', updateArea);
+        // map.on('draw.update', updateArea);
 
-        function updateArea(e) {
-            const data = draw.getAll();
-            const answer = document.getElementById('calculated-area');
-            if (data.features.length > 0) {
-                const area = turf.area(data);
-                // Restrict the area to 2 decimal points.
-                const rounded_area = Math.round(area * 100) / 100;
-                answer.innerHTML = `<p><strong>${rounded_area}</strong></p><p>square meters</p>`;
-            } else {
-                answer.innerHTML = '';
-                if (e.type !== 'draw.delete')
-                    alert('Click the map to draw a polygon.');
-            }
-        }
+        // function updateArea(e) {
+        //     const data = draw.getAll();
+        //     const answer = document.getElementById('calculated-area');
+        //     if (data.features.length > 0) {
+        //         const area = turf.area(data);
+        //         // Restrict the area to 2 decimal points.
+        //         const rounded_area = Math.round(area * 100) / 100;
+        //         answer.innerHTML = `<p><strong>${rounded_area}</strong></p><p>square meters</p>`;
+        //     } else {
+        //         answer.innerHTML = '';
+        //         if (e.type !== 'draw.delete')
+        //             alert('Click the map to draw a polygon.');
+        //     }
+        // }
     </script>
 
 </body>
